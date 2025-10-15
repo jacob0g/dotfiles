@@ -1,0 +1,162 @@
+{
+    "layer": "top",
+    "position": "top",
+    "modules-left": ["sway/workspaces", "wlr/taskbar", "sway/mode", "sway/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "idle_inhibitor", "pulseaudio", "temperature", "custom/cpu_speed", "battery"],
+    "sway/mode": {
+        "format": " {}"
+    },
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "disable-markup": false,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "1 <span font='Font Awesome 5 Free 11'> </span>",
+            "2": "2 <span font='Font Awesome 5 Free 11'> </span>",
+            "3": "3 <span font='Font Awesome 5 Free 11'> </span>",
+            "4": "4 <span font='Font Awesome 5 Free 11'> </span>",
+            "5": "5 <span font='Font Awesome 5 Free 11'> </span>",
+            "6": "6 <span font='Font Awesome 5 Free 11'> </span>"
+        }
+    },
+    "sway/window": {
+        "max-length": 60,
+        "tooltip": false
+    },
+    "clock": {
+        "format": "{:%a %d %b - %H:%M}",
+        "on-click": "gnome-calendar"
+    },
+    "hyprland/window": {
+        "format": "👉 {}",
+        "separate-outputs": true
+    },
+    "custom/cpu_speed": {
+        "interval": 10,
+        "return-type": "json",
+        "exec": "~/.config/waybar/modules/get_cpu_speed.sh",
+        "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {}",
+        "format-icons": [""],
+        "escape": true,
+        "on-click": "foot -e htop"
+    },
+    "sway/language": {
+        "format": "<span font='Font Awesome 5 Free 9'>🏳️</span> {}",
+        "tooltip-format": "{long}",
+        "on-click": "swaymsg input 'type:keyboard' xkb_switch_layout next"
+    },
+   "battery": {
+        "format": "<span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
+        "format-icons": ["", "", "", "", ""],
+        "format-time": "{H}h{M}m",
+        "format-charging": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  {capacity}% - {time}",
+        "format-full": "<span font='Font Awesome 5 Free'></span>  <span font='Font Awesome 5 Free 11'>{icon}</span>  Charged",
+        "interval": 30,
+        "states": {
+            "warning": 25,
+            "critical": 10
+        },
+        "tooltip": false,
+        "on-click": "2"
+    },
+    "network": {
+        "format": "{icon}",
+        "format-alt": "{ipaddr}/{cidr} {icon}",
+        "format-alt-click": "click-right",
+        "format-wifi": "<span font='Font Awesome 5 Free 10'></span>  {essid} ({signalStrength}%)",
+        "format-ethernet": " {ifname}",
+        "format-disconnected": "⚠ Disconnected",
+        "on-click": "terminator -e ~/.config/waybar/modules/network_manager",
+        // "on-click": "gnome-control-center wifi",
+        "tooltip": false
+    },
+    "pulseaudio": {
+        "format": "<span font='Font Awesome 5 Free 11'>{icon:2}</span> {volume:4}% - {desc}",
+        "format-bluetooth": "<span font='Font Awesome 5 Free 11'> {icon:2}</span> {volume:4}% - {desc}",
+        "format-alt": "<span font='Font Awesome 5 Free 11'>{icon:2}</span> {volume:4}%",
+        "format-alt-click": "click-right",
+        "format-muted": "<span font='Font Awesome 5 Free 11'>󰝟</span>",
+        "format-icons": {
+            "headphone": [" ", " ", " ", " "],
+            "default": ["", "", "", ""]
+        },
+        "scroll-step": 2,
+        "on-click": "pavucontrol",
+        "tooltip": false
+    },
+    "custom/storage": {
+        "format": "{} ",
+        "format-alt": "{percentage}% ",
+        "format-alt-click": "click-right",
+        "return-type": "json",
+        "interval": 60,
+        "exec": "~/.config/waybar/modules/storage.sh"
+    },
+    "backlight": {
+        "format": "{icon}",
+        "format-alt": "{percent}% {icon}",
+        "format-alt-click": "click-right",
+        "format-icons": ["", "󰌵"],
+        "on-scroll-down": "light -A 1",
+        "on-scroll-up": "light -U 1"
+    },
+    "temperature": {
+        "format": "<span font='Font Awesome 5 Free 9'></span> {temperatureC:3}°C",
+        "hwmon-path": "/sys/class/thermal/thermal_zone11/temp",
+        // "hwmon-path": "/sys/class/hwmon/hwmon7/temp1_input",
+        // "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input",
+        "on-click": "foot -e 'watch -n1 sensors'"
+    },
+    "custom/temperature": {
+        // "return-type": "json",
+        "exec": "sensors -j|jq '.\"coretemp-isa-0000\".\"Package id 0\".temp1_input'",
+        "format": "<span font='Font Awesome 5 Free 9'>{icon}</span>  {}",
+        "format-icons": [""],
+        "interval": 5,
+        "on-click": "foot -e 'watch -n1 sensors'"
+    },
+   "idle_inhibitor": {
+        "format": "{icon}",
+        "format-alt": "{icon} idle {status}",
+        "format-alt-click": "click-right",
+        "format-icons": {
+            "activated": "<span font='Font Awesome 5 Free 9'></span>",
+            "deactivated": "<span font='Font Awesome 5 Free 9'></span>"
+        },
+        "tooltip": false
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 18
+    },
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 14,
+        "icon-theme": "Flat-Remix-Violet-Dark",
+        "tooltip-format": "{title}",
+        "on-click": "activate",
+        "on-click-middle": "close"
+    },
+    "custom/notification": {
+        "tooltip": false,
+        "format": " {} {icon} ",
+        "format-icons": {
+          "notification": "<span foreground='red'><sup></sup></span>",
+          "none": "",
+          "dnd-notification": "<span foreground='red'><sup></sup></span>",
+          "dnd-none": "",
+          "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+          "inhibited-none": "",
+          "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+          "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+}
