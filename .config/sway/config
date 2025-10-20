@@ -52,6 +52,7 @@ set $filemanager thunar
 output eDP-1 resolution 2880x1800 position 2880,0
 
 output DP-1 scale 1.5
+output DP-4 scale 1.5
 
 # Natural scrolling for all touchpads
 input type:touchpad {
