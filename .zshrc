@@ -42,4 +42,4 @@ fi
 
 
 # Created by `pipx` on 2025-10-16 07:50:04
-export PATH="$PATH:/home/mac/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
