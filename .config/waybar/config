@@ -85,6 +85,20 @@
         "on-click": "pavucontrol",
         "tooltip": false
     },
+    "pipewire": {
+        "format": "<span font='Font Awesome 5 Free 11'>{icon:2}</span> {volume:4}% - {desc}",
+        "format-bluetooth": "<span font='Font Awesome 5 Free 11'> {icon:2}</span> {volume:4}% - {desc}",
+        "format-alt": "<span font='Font Awesome 5 Free 11'>{icon:2}</span> {volume:4}%",
+        "format-alt-click": "click-right",
+        "format-muted": "<span font='Font Awesome 5 Free 11'>󰝟</span>",
+        "format-icons": {
+            "headphone": [" ", " ", " ", " "],
+            "default": ["", "", "", ""]
+        },
+        "scroll-step": 2,
+        "on-click": "pwvucontrol",
+        "tooltip": false
+    },
     "custom/storage": {
         "format": "{} ",
         "format-alt": "{percentage}% ",
