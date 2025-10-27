@@ -68,7 +68,7 @@ exec blueman-applet
 exec blueman-tray
 
 # Start xwayland
-xwayland enable
+#xwayland enable
 
 # Dark Gray
 set $lock_color 303030 

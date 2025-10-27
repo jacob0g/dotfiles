@@ -35,11 +35,12 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
 
     # Add SSH Keys
     for key in "${ssh_keys[@]}"; do
-        ssh-add ~/.ssh/$key > /dev/null
+        # Check key exists
+        if [ -f "$HOME/.ssh/$key" ]; then
+            ssh-add $HOME/.ssh/$key 2> /dev/null
+        fi
     done
 fi
 
-
-
-# Created by `pipx` on 2025-10-16 07:50:04
-export PATH="$PATH:/home/mac/.local/bin"
+# Add pipx path
+export PATH="$PATH:$HOME/.local/bin"
