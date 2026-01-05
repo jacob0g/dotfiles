@@ -44,3 +44,11 @@ fi
 
 # Add pipx path
 export PATH="$PATH:$HOME/.local/bin"
+
+export PATH="$PATH:$HOME/can-utils"
+
+export PATH="$PATH:/opt/ozone"
+export PATH="$PATH:/opt/JLink"
+
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
+# export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/JLink"
