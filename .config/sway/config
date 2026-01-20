@@ -14,7 +14,7 @@ exec_always {
     gsettings set $gnome-schema monospace-font-name JetBrains Mono Regular
 }
 
-exec mako
+exec mako --ignore-timeout 1 --default-timeout 5000
 exec nm-applet --indicator
 
 bar {
@@ -57,6 +57,10 @@ output DP-4 scale 1.5
 
 output "AOC 24G2W1G4 AWBM81A000393" scale 1.2 mode 1920x1080@144Hz
 
+# Work monitor
+# output "LG Electronics LG HDR 4K 411NTLE4L208" \
+    # resolution 
+
 # Natural scrolling for all touchpads
 input type:touchpad {
     tap enabled
@@ -75,9 +79,9 @@ exec blueman-tray
 set $lock_color 303030 
 
 exec swayidle -w \
-         timeout 1200 'swaylock -f -c $lock_color --clock --effect-blur 7x5 --grace 10 --fade-in 0.6' \
+         timeout 1200 'swaylock -f -c $lock_color --clock --indicator --effect-blur 7x5 --grace 10 --fade-in 0.6' \
          timeout 1500 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-         before-sleep 'swaylock -f -c $lock_color --clock --effect-blur 7x5 --grace 10 --fade-in 0.6'
+         before-sleep 'swaylock -f -c $lock_color --clock --indicator --effect-blur 7x5 --grace 10 --fade-in 0.6'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
