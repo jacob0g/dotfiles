@@ -3,7 +3,7 @@
     "position": "top",
     "modules-left": ["sway/workspaces", "wlr/taskbar", "sway/mode", "sway/window"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "idle_inhibitor", "pulseaudio", "temperature", "custom/cpu_speed", "battery"],
+    "modules-right": ["tray", "custom-weather", "pulseaudio", "temperature", "custom/cpu_speed", "battery"],
     "sway/mode": {
         "format": " {}"
     },
@@ -31,6 +31,12 @@
     "hyprland/window": {
         "format": "👉 {}",
         "separate-outputs": true
+    },
+    "custom-weather": {
+        "format": "<span font='Font Awesome Free 11'>{icon}</span> {}",
+        "format-icons": ["󰖐"],
+        "on-click": "kweather",
+        "tooltip": false
     },
     "custom/cpu_speed": {
         "interval": 10,
@@ -68,7 +74,6 @@
         "format-ethernet": " {ifname}",
         "format-disconnected": "⚠ Disconnected",
         "on-click": "terminator -e ~/.config/waybar/modules/network_manager",
-        // "on-click": "gnome-control-center wifi",
         "tooltip": false
     },
     "pulseaudio": {
@@ -96,7 +101,7 @@
             "default": ["", "", "", ""]
         },
         "scroll-step": 2,
-        "on-click": "pwvucontrol",
+        "on-click": "helvum",
         "tooltip": false
     },
     "custom/storage": {
@@ -172,5 +177,5 @@
         "on-click": "swaync-client -t -sw",
         "on-click-right": "swaync-client -d -sw",
         "escape": true
-    },
+    }
 }

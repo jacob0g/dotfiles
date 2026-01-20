@@ -86,6 +86,7 @@ window#waybar.empty {
 #memory,
 #network,
 #pulseaudio,
+#pipewire,
 #idle_inhibitor,
 #language,
 #backlight,

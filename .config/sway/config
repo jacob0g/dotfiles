@@ -14,7 +14,6 @@ exec_always {
     gsettings set $gnome-schema monospace-font-name JetBrains Mono Regular
 }
 
-
 exec mako
 exec nm-applet --indicator
 
@@ -39,12 +38,12 @@ set $term foot
 # Your preferred application launcher
 set $menu "rofi -show run -show-icons"
 
-set $filemanager thunar
+set $filemanager dolphin
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-#output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg /usr/share/backgrounds/sway/switch-bg.png fill
 #
 
 
@@ -75,10 +74,10 @@ exec blueman-tray
 # Dark Gray
 set $lock_color 303030 
 
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c $lock_color' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c $lock_color'
+exec swayidle -w \
+         timeout 1200 'swaylock -f -c $lock_color --clock --effect-blur 7x5 --grace 10 --fade-in 0.6' \
+         timeout 1500 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock -f -c $lock_color --clock --effect-blur 7x5 --grace 10 --fade-in 0.6'
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -118,7 +117,7 @@ set $lock_color 303030
     bindsym $mod+Shift+Return exec $filemanager
 
     # Lock screen after sleep
-    bindsym $mod+Shift+p exec systemctl suspend
+    # bindsym $mod+Shift+l exec systemctl suspend
 
     # exec swayidle -w \
         # before-sleep 'swaylock -f -c 9999'
@@ -263,8 +262,12 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     
-    # Special key to take a screenshot with grim
-    bindsym Print exec grim
+    # Screenshot
+    bindsym $mod+Shift+p      exec ~/.local/bin/screenshot.sh region
+    bindsym Shift+Print       exec ~/.local/bin/screenshot.sh window
+    bindsym Ctrl+Print        exec ~/.local/bin/screenshot.sh output
+    bindsym Ctrl+Shift+Print  exec ~/.local/bin/screenshot.sh all
+
 
 #
 # Status Bar:
@@ -298,8 +301,10 @@ client.focused          #1a5096 #1a5096 #ffffff #1a5096   #1a5096
 
 # Wayland default floats
 for_window [app_id="org.gnome.(Calculator|Calendar|Settings|Nautilus|Weather)"] floating enable
+for_window [app_id="org.kde.(kcalc|kclock|kweather|kdf|ksnip)"] floating enable
 for_window [app_id="(pavucontrol|psensor)"] floating enable
 for_window [app_id="thunar"] floating enable
+for_window [app_id="dolphin"] floating enable
 for_window [app_id="blueman-manager"] floating enable
 
 
