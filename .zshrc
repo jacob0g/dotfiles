@@ -42,6 +42,10 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
     done
 fi
 
+# Bind Ctrl+Arrow Keys for navigation
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+
 # Add pipx path
 export PATH="$PATH:$HOME/.local/bin"
 
