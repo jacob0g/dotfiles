@@ -64,6 +64,8 @@ output "AOC 24G2W1G4 AWBM81A000393" scale 1.2 mode 1920x1080@144Hz
 # Natural scrolling for all touchpads
 input type:touchpad {
     tap enabled
+    click_method clickfinger
+    middle_emulation enabled
     natural_scroll enabled
     scroll_factor 0.5
 }
