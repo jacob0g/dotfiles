@@ -46,6 +46,13 @@ fi
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
+# Fix delete key
+bindkey "^[[3~" delete-char
+
+# Fix home/end keys if necessary
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+
 # Add pipx path
 export PATH="$PATH:$HOME/.local/bin"
 
