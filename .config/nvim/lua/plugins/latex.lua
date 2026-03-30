@@ -17,25 +17,4 @@ return {
             }
         end
     },
-    {
-        "xuhdev/vim-latex-live-preview",
-        lazy = true,
-        
-        init = function()
-            vim.g.livepreview_use_biber = 1
-            vim.g.livepreview_previewer = "skim"
-        end
-    },
-    {
-        "sirver/ultisnips",
-        lazy = true,
-
-        init = function()
-            vim.g.UltiSnipsExpandTrigger = "<tab>"
-            vim.g.UltiSnipsJumpForwardTrigger = "<tab>"
-            vim.g.UltiSnipsJumpBackwardTrigger = "<s-tab>"
-            
-            vim.g.UltiSnipsSnippetDirectories = {vim.fn.stdpath("config") .. "/UltiSnips"}
-        end
-    }
 }

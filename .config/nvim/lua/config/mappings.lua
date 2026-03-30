@@ -61,6 +61,3 @@ vim.api.nvim_set_keymap('i', "<CR>", [[pumvisible() ? "\<C-e><CR>" : "\<CR>"]], 
 -- coq_nvim: If preview open, don't leave insert mode on escape key
 -- vim.api.nvim_set_keymap('i', "<ESC>", [[pumvisible() ? "\<C-e>" : "\<ESC>"]], coq_opts)
 
-
--- LaTex Live Preview
-map('n', "<localleader>lp", "<cmd> LLPStartPreivew <CR>")
