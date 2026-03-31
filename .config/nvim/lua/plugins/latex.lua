@@ -20,6 +20,7 @@ return {
     {
         "xuhdev/vim-latex-live-preview",
         lazy = true,
+        ft = "tex",
         
         init = function()
             vim.g.livepreview_use_biber = 1
@@ -28,7 +29,6 @@ return {
     },
     {
         "sirver/ultisnips",
-        lazy = true,
 
         init = function()
             vim.g.UltiSnipsExpandTrigger = "<tab>"
