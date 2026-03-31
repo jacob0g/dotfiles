@@ -5,13 +5,11 @@
 
 
 # Zsh Widgets
-autoload -Uz compinit promptinit
+autoload -Uz compinit 
 compinit
-promptinit
 eval "$(register-python-argcomplete pipx)"
 
-# Prompt Theme
-prompt walters
+# -- User Configuration --
 
 # SSH Keys in ~/.ssh/...
 ssh_keys=("github" "gitlab" "bitbucket")
@@ -24,6 +22,8 @@ alias sudo='sudo '
 alias vim='nvim'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias wine='env -u DISPLAY wine' # use wayland
+alias winecfg='env -u DISPLAY winecfg'
 
 # Setup dotfiles
 alias config="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
@@ -63,6 +63,8 @@ export PATH="$PATH:/opt/JLink"
 export PATH="$PATH:/opt/renode/bin"
 export PATH="$PATH:$HOME/.dotnet/tools"
 export PATH="$PATH:$HOME/.local/ti-cgt-tms470/bin"
+export PATH="$PATH:$HOME/.platformio/penv/bin"
+export PATH="$PATH:/opt/vesc-tool"
 
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
 # export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/JLink"
