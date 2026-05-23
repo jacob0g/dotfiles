@@ -11,6 +11,7 @@ return {
             vim.opt.conceallevel = 1
             vim.g.tex_conceal = "abdmg"
             vim.g.vimtex_view_forward_search_on_start = 0
+            vim.g.vimtex_compiler_method = 'latexmk'
             vim.g.vimtex_compiler_latexmk = {
                 out_dir = "build",
                 aux_dir = "build"
