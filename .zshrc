@@ -84,6 +84,7 @@ export PATH="$PATH:$HOME/.dotnet/tools"
 export PATH="$PATH:$HOME/.local/ti-cgt-tms470/bin"
 export PATH="$PATH:$HOME/.platformio/penv/bin"
 export PATH="$PATH:/opt/vesc-tool"
+export PATH="$PATH:$HOME/ti/ccs2051/ccs/theia"
 
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
 # export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/JLink"
