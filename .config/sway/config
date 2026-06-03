@@ -58,8 +58,7 @@ output DP-4 scale 1.5
 output "AOC 24G2W1G4 AWBM81A000393" scale 1.2 mode 1920x1080@144Hz
 
 # Work monitor
-# output "LG Electronics LG HDR 4K 411NTLE4L208" \
-    # resolution 
+output "LG Electronics LG HDR 4K 411NTLE4L208" scale 1.5 position 4320,-520
 
 # Natural scrolling for all touchpads
 input type:touchpad {
