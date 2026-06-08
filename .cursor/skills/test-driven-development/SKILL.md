@@ -339,6 +339,38 @@ Before marking work complete:
 
 Can't check all boxes? You skipped TDD. Start over.
 
+## Recipe: Python with uv
+
+When using Python with `uv` as the package manager, use these commands in the TDD cycle.
+
+**Project setup:**
+```bash
+uv init                          # initialize if no pyproject.toml
+uv add --dev pytest pytest-cov   # add test dependencies
+uv run pytest --co               # confirm test collection works
+```
+
+**Running tests:**
+```bash
+uv run pytest                      # all tests
+uv run pytest tests/test_foo.py    # single file
+uv run pytest -k "test_name"       # by name pattern
+uv run pytest --cov=src            # with coverage
+uv run pytest -x                   # stop on first failure
+```
+
+**uv essentials:**
+```bash
+uv add <package>           # add dependency
+uv add --dev <package>     # add dev dependency
+uv remove <package>        # remove dependency
+uv sync                    # sync environment from lockfile
+uv run <command>           # run in managed environment
+uv lock                    # regenerate lockfile
+```
+
+Always use `uv run` to execute commands — never activate venvs manually. Commit both `pyproject.toml` and `uv.lock`.
+
 ## When Stuck
 
 | Problem | Solution |

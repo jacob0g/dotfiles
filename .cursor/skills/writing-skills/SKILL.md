@@ -55,8 +55,26 @@ The entire skill creation process follows RED-GREEN-REFACTOR.
 **Don't create for:**
 - One-off solutions
 - Standard practices well-documented elsewhere
-- Project-specific conventions (put in CLAUDE.md)
+- Project-specific conventions (put in CLAUDE.md / `.cursor/rules/`)
 - Mechanical constraints (if it's enforceable with regex/validation, automate it—save documentation for judgment calls)
+
+### Detecting Patterns Worth Promoting
+
+Watch for these signals that a repeated workflow should become a skill:
+
+- **Repeated sequences:** The user has asked for the same multi-step sequence three or more times (e.g. "always run lint then tsc then test before commit").
+- **Re-derived steps:** The agent keeps re-deriving the same procedure on every task in a repo (e.g. "how we deploy preview branches").
+- **Policy-shaped corrections:** A user correction sounds like a policy ("never use raw SQL here — always the repository layer").
+
+**Skill vs Rule vs Hook:**
+
+| Mechanism | Use for |
+|----------|---------|
+| **Skill** (`.cursor/skills/`) | On-demand procedure with branching steps or tool usage. |
+| **Rule** (`.cursor/rules/`) | Always-on conventions, style, file patterns. |
+| **Hook** (`.cursor/hooks.json`) | Automate after file save / stop events. |
+
+If the pattern is "every time I save, run X," suggest a **hook**. If it is "always follow this convention," suggest a **rule**. If it is a multi-step procedure invoked on demand, make it a **skill**.
 
 ## Skill Types
 
