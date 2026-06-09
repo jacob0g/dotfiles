@@ -305,13 +305,12 @@ client.focused          #1a5096 #1a5096 #ffffff #1a5096   #1a5096
 #client.focused_inactive  #5c6370 #3b3228 #ffffff #5c6370   #5c6370
 #client.unfocused         #5c6370 #3b3228 #ffffff #5c6370   #5c6370
 
-# Wayland default floats
-for_window [app_id="org.gnome.(Calculator|Calendar|Settings|Nautilus|Weather)"] floating enable
-for_window [app_id="org.kde.(kcalc|kclock|kweather|kdf|ksnip)"] floating enable
-for_window [app_id="(pavucontrol|psensor)"] floating enable
-for_window [app_id="thunar"] floating enable
-for_window [app_id="dolphin"] floating enable
-for_window [app_id="blueman-manager"] floating enable
-for_window [app_id="wine"] floating enable
+# Float all windows by default
+for_window [app_id=".*"] floating enable
+for_window [class=".*"] floating enable
+
+# Exceptions: tile these instead
+for_window [app_id="firefox"] floating disable
+for_window [app_id="foot"] floating disable
 
 include /etc/sway/config.d/*
