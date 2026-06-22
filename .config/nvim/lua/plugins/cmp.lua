@@ -13,17 +13,11 @@ return {
     init = function()
         -- COQ Settings
         vim.g.coq_settings = {
-            auto_start = 'shut-up',
-            display = {
-                pum = {
-                    y_max_len = 5, -- max length of preview
-                },
-            },
             keymap = {
                 recommended = false,
-                jump_to_mark = "",
             },
         }
+        vim.o.pumheight = 5
     end,
 
     config = function()
