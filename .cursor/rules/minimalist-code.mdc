@@ -1,0 +1,89 @@
+---
+description: Write clean, concise, simple code; prefer simplicity over generality
+alwaysApply: true
+---
+
+# Minimalist Code
+
+## Core principle
+
+Prioritise simplicity. Fewest moving parts that solve the actual problem. Simplicity never justifies worse performance or efficiency — pick the simple form of the efficient solution, not the slow form of the simple one.
+
+## Assume the application
+
+Application-specific assumptions are preferred over generic design. Write for the case that exists, not the cases that might.
+
+Example: implementing a new control strategy for a windmill controller, assume the windmill is always fixed-pitch. No pitch abstraction layer, no strategy interface for one strategy.
+
+## Naming
+
+- `snake_case` for variables and functions: `duty_cycle`, `test_value`
+- Leading underscore for private: `_private_value`
+- Constants are in uppercase: `NUM_CELLS`
+- Names carry meaning; no type prefixes, no abbreviations that need decoding.
+
+## Comments
+
+Minimal and concise. Comment only what the reader cannot infer from the code — a constraint, a unit, a non-obvious bound. Never narrate what the next line does.
+
+## Ask first
+
+When performance, efficiency, or robustness could be improved but only by adding complexity, stop and check with the user. State the gain, the added complexity, and your recommendation.
+
+## Examples
+
+Bad — abstraction for one concrete case:
+
+```python
+class RotorModel(ABC):
+    @abstractmethod
+    def tip_speed_ratio(self, wind_speed, rotor_speed): ...
+
+
+class FixedPitchRotor(RotorModel):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def tip_speed_ratio(self, wind_speed, rotor_speed):
+        return rotor_speed * self.radius / wind_speed
+
+
+def make_rotor(kind, radius):
+    if kind == "fixed_pitch":
+        return FixedPitchRotor(radius)
+    raise ValueError(kind)
+```
+
+Good — assumption inlined, one function:
+
+```python
+def tip_speed_ratio(wind_speed, rotor_speed, radius=1.75):
+    # Below cut-in the ratio is undefined; report 0 so the controller idles.
+    if wind_speed < CUT_IN_WIND_SPEED:
+        return 0.0
+    return rotor_speed * radius / wind_speed
+```
+
+```c
+#define DUTY_MAX 0.95f
+
+static float _last_duty = 0.0f;
+
+float duty_cycle(float rotor_speed, float wind_speed)
+{
+    float ratio = rotor_speed * ROTOR_RADIUS / wind_speed;
+    float duty = 0.5f * ratio / TSR_OPTIMAL;
+
+    if (duty > DUTY_MAX) {
+        duty = DUTY_MAX;
+    }
+
+    // Hold floor while rotor is spinning
+    if (duty < 0.1f && rotor_speed > 0.0f) {
+        duty = 0.1f;
+    }
+
+    _last_duty = duty;
+    return duty;
+}
+```
