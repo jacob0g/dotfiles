@@ -28,3 +28,4 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
 fi
 
 
+. "$HOME/.cargo/env"
