@@ -99,4 +99,6 @@ export PATH="$PATH:/opt/vesc-tool"
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
 # export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/JLink"
 
-source "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then
+    source "$HOME/.cargo/env"
+fi
