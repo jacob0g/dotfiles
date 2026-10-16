@@ -3,6 +3,9 @@ local map = vim.keymap.set
 -- General Mappings
 map('n', "<C-s>", "<cmd> w <CR>")
 
+map({'i', 'n', 'v'}, "<Find>", "<Home>")
+map({'i', 'n', 'v'}, "<Select>", "<End>")
+
 -- Telescope
 local ts = require("telescope.builtin")
 map('n', "<leader>ff", ts.find_files, { desc = "Telescope find files" })
