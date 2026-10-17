@@ -41,7 +41,7 @@ source $ZSH/oh-my-zsh.sh
 ssh_keys=("github" "gitlab" "bitbucket")
 
 # Enable colors
-export TERM="xterm-256color"
+[ -z "$TMUX" ] && export TERM="xterm-256color"
 
 # Aliases
 alias sudo='sudo '
