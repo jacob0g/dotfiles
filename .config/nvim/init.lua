@@ -31,3 +31,11 @@ vim.cmd("colorscheme onedark")
 
 vim.keymap.set("n", "<leader>[", "<cmd> colorscheme onedark <CR>")
 vim.keymap.set("n", "<leader>]", "<cmd> colorscheme onedark_dark <CR>")
+
+-- start treesitter
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "*",
+    callback = function(args)
+        pcall(vim.treesitter.start, args.buf)
+    end,
+})
