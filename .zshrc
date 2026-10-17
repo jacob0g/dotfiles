@@ -102,3 +102,5 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
 if [ -f "$HOME/.cargo/env" ]; then
     source "$HOME/.cargo/env"
 fi
+
+[ -f ~/.config/secrets.env ] && . ~/.config/secrets.env
