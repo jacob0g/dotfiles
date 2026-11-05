@@ -1,3 +1,5 @@
+# Selected text goes to system clipboard
+set selection-clipboard clipboard
 
 # Disable Search Highlight
 set highlight-active-color "#ffffff"

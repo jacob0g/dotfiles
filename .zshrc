@@ -29,6 +29,7 @@ CASE_SENSITIVE="true"
 # Plguins
 plugins=(
     git
+    ssh-agent
     python
     zsh-syntax-highlighting
     zsh-autosuggestions
@@ -38,7 +39,14 @@ source $ZSH/oh-my-zsh.sh
 # -- User Configuration --
 
 # SSH Keys in ~/.ssh/...
-ssh_keys=("github" "gitlab" "bitbucket")
+ssh_keys=() 
+for p in ~/.ssh/*.pub; do 
+    [ -f "${p%.pub}" ] && ssh_keys+=("${p%.pub}") 
+done
+
+# ssh-agent plugin to reuse existing agents
+zstyle :omz:plugins:ssh-agent honor-existing yes
+zstyle :omz:plugins:ssh-agent identities $ssh_keys
 
 # Enable colors
 [ -z "$TMUX" ] && export TERM="xterm-256color"
@@ -94,6 +102,7 @@ export PATH="$PATH:$HOME/.dotnet/tools"
 export PATH="$PATH:$HOME/.local/ti-cgt-tms470/bin"
 export PATH="$PATH:$HOME/.platformio/penv/bin"
 export PATH="$PATH:/opt/vesc-tool"
+export PATH="$PATH:/opt/c2prog"
 # export PATH="$PATH:$HOME/ti/ccs2051/ccs/theia"
 
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
