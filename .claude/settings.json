@@ -4,21 +4,27 @@
     "pr": ""
   },
   "permissions": {
-    "deny": [
-      "Bash(git push*)",
-      "Bash(git merge*)",
-      "Bash(git rebase*)",
-      "Bash(git reset*)",
-      "Bash(sudo *)"
-    ],
+    "deny": [],
     "defaultMode": "auto"
   },
+  "skillOverrides": {
+    "ponytail:ponytail-audit": "off",
+    "ponytail:ponytail-debt": "off",
+    "ponytail:ponytail-gain": "off",
+    "ponytail:ponytail-help": "off",
+    "mattpocock-skills:diagnosing-bugs": "off",
+    "mattpocock-skills:prototype": "off",
+    "mattpocock-skills:research": "off",
+    "mattpocock-skills:domain-modeling": "off",
+    "mattpocock-skills:codebase-design": "off",
+    "mattpocock-skills:wizard": "off",
+    "claude-md-management:revise-claude-md": "off"
+  },
   "enabledPlugins": {
-    "pyright-lsp@claude-plugins-official": false,
-    "caveman@caveman": true,
-    "clangd-lsp@claude-plugins-official": true,
     "ponytail@ponytail": true,
-    "mattpocock-skills@claude-plugins-official": true
+    "mattpocock-skills@claude-plugins-official": false,
+    "clangd-lsp@claude-plugins-official": true,
+    "pyright-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "caveman": {
@@ -46,10 +52,12 @@
       }
     }
   },
-  "voice": {
-    "enabled": false,
-    "mode": "hold"
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
   },
+  "autoMemoryEnabled": false,
   "theme": "dark",
   "voiceEnabled": false
 }
